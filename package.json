@@ -1,0 +1,17 @@
+{
+  "name": "cabal-bot-pipeline",
+  "version": "1.0.0",
+  "description": "Easy pipeline syntax for cabal bots",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cabal"
+  ],
+  "author": "timgoeller",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "cabal-bot-core": "^1.0.0"
+  }
+}
