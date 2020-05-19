@@ -16,14 +16,14 @@ pipeline(cb).onCommand('log').onCommand('ping').do(
 )
 
 // react to !log pong
-pipeline(cb).pipeline().onCommand('log').onCommand('pong').do(
+pipeline(cb).onCommand('log').onCommand('pong').do(
   (messageText, cabal, envelope) => {
     console.log('pong!')
   }
 )
 
 // return whatever the user enters after !return
-pipeline(cb).pipeline().onCommand('return').do(
+pipeline(cb).onCommand('return').do(
   (messageText, cabal, envelope) => {
     cabal.publishMessage({
       type: 'chat/text',
@@ -36,7 +36,7 @@ pipeline(cb).pipeline().onCommand('return').do(
 )
 
 //r eact to !weatherreport in a channel named weather
-pipeline(cb).pipeline().onCommand('weatherreport').inChannel('weather').do(
+pipeline(cb).onCommand('weatherreport').inChannel('weather').do(
   (messageText, cabal, envelope) => {
     cabal.publishMessage({
       type: 'chat/text',
