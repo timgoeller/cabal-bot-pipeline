@@ -9,6 +9,6 @@
   "author": "timgoeller",
   "license": "AGPL-3.0",
   "dependencies": {
-    "cabal-bot-core": "^1.0.3"
+    "cabal-bot-core": "^1.0.5"
   }
 }
