@@ -1,6 +1,6 @@
 {
   "name": "cabal-bot-pipeline",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Easy pipeline syntax for cabal bots",
   "main": "index.js",
   "keywords": [
