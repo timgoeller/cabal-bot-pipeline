@@ -14,14 +14,14 @@ class Pipeline {
   }
 
   _registerEvents () {
-    this.bot.on('new-command', (envelope, cabalDetails) => {
+    this.bot.on('new-command', (envelope, cabalDetails, messageInfo) => {
       if (this.expression.prefixRequired) {
-        this.expression._run(envelope, cabalDetails)
+        this.expression._run(envelope, cabalDetails, messageInfo)
       }
     })
-    this.bot.on('new-message', (envelope, cabalDetails) => {
+    this.bot.on('new-message', (envelope, cabalDetails, messageInfo) => {
       if (!this.expression.prefixRequired) {
-        this.expression._run(envelope, cabalDetails)
+        this.expression._run(envelope, cabalDetails, messageInfo)
       }
     })
   }

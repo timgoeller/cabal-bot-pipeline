@@ -7,6 +7,20 @@ class CabalBotExpression {
     }
   }
 
+  onMention () {
+    return this._constructResolver(this._resolveOnMention())
+  }
+
+  _resolveOnMention () {
+    return (envelope, messageText, cabal, messageInfo) => {
+      if (messageInfo.mention) {
+        return { match: true }
+      } else {
+        return { match: false }
+      }
+    }
+  }
+
   onCommand (commandName) {
     if (!commandName) {
       throw new Error('name of command must be set')
@@ -81,13 +95,13 @@ class CabalBotExpression {
     return this.nextExpr
   }
 
-  _run (envelope, cabal) {
+  _run (envelope, cabal, messageInfo) {
     let messageText = envelope.message.value.content.text.substring(1)
     let currentExpression = this.firstExpr
     while (true) {
       /* when there is no resolve, this is the end of the pipeline (containing the cb) */
       if (!currentExpression.resolve) break
-      const resolveResult = currentExpression.resolve(envelope, messageText, cabal)
+      const resolveResult = currentExpression.resolve(envelope, messageText, cabal, messageInfo)
       if (!resolveResult.match) return
       messageText = resolveResult.messageText
       currentExpression = currentExpression.nextExpr
